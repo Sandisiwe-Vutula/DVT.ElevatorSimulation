@@ -1,0 +1,12 @@
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\bin\Debug\net8.0\DVT.Elevator.Services.deps.json
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\bin\Debug\net8.0\DVT.Elevator.Services.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\bin\Debug\net8.0\DVT.Elevator.Services.pdb
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\DVT.Elevator.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\DVT.Elevator.Services.AssemblyInfoInputs.cache
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\DVT.Elevator.Services.AssemblyInfo.cs
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\DVT.Elevator.Services.csproj.CoreCompileInputs.cache
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\DVT.Elevator.Services.sourcelink.json
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\DVT.Elevator.Services.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\refint\DVT.Elevator.Services.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\DVT.Elevator.Services.pdb
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Services\obj\Debug\net8.0\ref\DVT.Elevator.Services.dll

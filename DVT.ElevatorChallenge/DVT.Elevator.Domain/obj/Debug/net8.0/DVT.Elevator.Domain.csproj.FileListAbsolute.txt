@@ -1,0 +1,12 @@
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\bin\Debug\net8.0\DVT.Elevator.Domain.deps.json
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\bin\Debug\net8.0\DVT.Elevator.Domain.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\bin\Debug\net8.0\DVT.Elevator.Domain.pdb
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\DVT.Elevator.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\DVT.Elevator.Domain.AssemblyInfoInputs.cache
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\DVT.Elevator.Domain.AssemblyInfo.cs
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\DVT.Elevator.Domain.csproj.CoreCompileInputs.cache
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\DVT.Elevator.Domain.sourcelink.json
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\DVT.Elevator.Domain.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\refint\DVT.Elevator.Domain.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\DVT.Elevator.Domain.pdb
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.Domain\obj\Debug\net8.0\ref\DVT.Elevator.Domain.dll

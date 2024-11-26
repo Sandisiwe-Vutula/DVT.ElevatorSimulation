@@ -1,0 +1,15 @@
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\bin\Debug\net8.0\DVT.Elevator.ConsoleApp.exe
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\bin\Debug\net8.0\DVT.Elevator.ConsoleApp.deps.json
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\bin\Debug\net8.0\DVT.Elevator.ConsoleApp.runtimeconfig.json
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\bin\Debug\net8.0\DVT.Elevator.ConsoleApp.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\bin\Debug\net8.0\DVT.Elevator.ConsoleApp.pdb
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.AssemblyInfo.cs
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.sourcelink.json
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\refint\DVT.Elevator.ConsoleApp.dll
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.pdb
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\DVT.Elevator.ConsoleApp.genruntimeconfig.cache
+C:\Users\neoma\source\repos\DVT.ElevatorSimulation\DVT.ElevatorChallenge\DVT.Elevator.ConsoleApp\obj\Debug\net8.0\ref\DVT.Elevator.ConsoleApp.dll
