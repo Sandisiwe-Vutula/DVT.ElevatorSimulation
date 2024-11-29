@@ -19,10 +19,10 @@ jobs:
           dotnet-version: '6.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./DVT.ElevatorChallenge.sln
 
       - name: Build
-        run: dotnet build --configuration Release
+        run: dotnet build ./DVT.ElevatorChallenge.sln --configuration Release
 
       - name: Test
-        run: dotnet test --configuration Release
+        run: dotnet test ./DVT.ElevatorChallenge.sln  --configuration Release
