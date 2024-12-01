@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
     {
-        services.AddSingleton(provider => new Building(10, 20, 10, ElevatorType.Passenger)); //temp
+        services.AddSingleton(provider => new Building(10, 20, 10, ElevatorType.Passenger)); //temp values
         services.AddTransient<IElevatorService, ElevatorService>();
         services.AddTransient<IBuildingService, BuildingService>();
         services.AddSingleton<ElevatorFactory>();

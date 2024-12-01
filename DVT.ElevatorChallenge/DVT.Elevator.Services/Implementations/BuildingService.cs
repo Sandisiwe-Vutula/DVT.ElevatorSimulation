@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DVT.Elevator.Domain.Entities;
 using DVT.Elevator.Domain.Enums;
 using DVT.Elevator.Services.Contracts;
+using DVT.Elevator.Services.CustomExceptions;
 using Microsoft.Extensions.Logging;
 
 namespace DVT.Elevator.Services.Implementations
@@ -37,29 +38,83 @@ namespace DVT.Elevator.Services.Implementations
         /// <param name="type">Type of elevator (e.g., Passenger, Freight).</param>
         public void InitializeBuilding(int elevatorCount, int maxCapacity, ElevatorType type)
         {
-            for (int i = 1; i <= elevatorCount; i++)
+            try
             {
-                var elevator = _elevatorFactory.CreateElevator(i, type, maxCapacity);
-                _building.Elevators.Add(elevator);
-                _logger.LogInformation($"Elevator {elevator.Id} added to the building.");
-            }
+                if (elevatorCount <= 0)
+                {
+                    throw new ElevatorInitializationException("Elevator count must be greater than zero.");
+                }
 
-            _logger.LogInformation("Building initialized successfully.");
+                if (maxCapacity <= 0)
+                {
+                    throw new ElevatorInitializationException("Maximum capacity must be greater than zero.");
+                }
+
+                for (int i = 1; i <= elevatorCount; i++)
+                {
+                    var elevator = _elevatorFactory.CreateElevator(i, type, maxCapacity);
+                    _building.Elevators.Add(elevator);
+                    _logger.LogInformation($"Elevator {elevator.Id} added to the building.");
+                }
+
+                _logger.LogInformation("Building initialized successfully.");
+            }
+            catch (ElevatorInitializationException ex)
+            {
+                _logger.LogError(ex, "Failed to initialize building.");
+                throw; 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unexpected error occurred during building initialization.");
+                throw;
+            }
         }
+
 
         /// <summary>
         /// Processes queued floor requests by assigning them to elevators.
         /// </summary>
         public async Task ProcessRequestsAsync()
         {
-            while (_building.FloorRequests.Any())
+            try
             {
-                var request = _building.FloorRequests.Dequeue();
-                _logger.LogInformation($"Processing request for floor {request.RequestedFloor} with {request.Passengers} passengers.");
+                while (_building.FloorRequests.Any())
+                {
+                    var request = _building.FloorRequests.Dequeue();
+                    _logger.LogInformation($"Processing request for floor {request.RequestedFloor} with {request.Passengers} passengers.");
 
-                await _elevatorService.CallElevatorAsync(request.RequestedFloor, request.Passengers);
+                    try
+                    {
+                        await _elevatorService.CallElevatorAsync(request.RequestedFloor, request.Passengers);
+                    }
+                    catch (InvalidFloorException ex)
+                    {
+                        _logger.LogWarning($"Invalid floor request: {ex.Message}");
+                    }
+                    catch (InvalidPassengerCountException ex)
+                    {
+                        _logger.LogWarning($"Invalid passenger count: {ex.Message}");
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "An error occurred while processing elevator request.");
+                        throw;
+                    }
+                }
+            }
+            catch (RequestProcessingException ex)
+            {
+                _logger.LogError(ex, "Request processing failed.");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unexpected error occurred during request processing.");
+                throw;
             }
         }
+
 
         #endregion
     }

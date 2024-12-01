@@ -58,7 +58,6 @@ Ensure you have the following installed:
 
 ## Running the Simulation
    To run the application, execute the following command:
-
    ```bash
    dotnet run
 

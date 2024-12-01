@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DVT.Elevator.Domain.Entities;
 using DVT.Elevator.Domain.Enums;
 using DVT.Elevator.Services.Contracts;
+using DVT.Elevator.Services.CustomExceptions;
 using DVT.Elevator.Services.Validations;
 using Microsoft.Extensions.Logging;
 
@@ -23,27 +24,51 @@ namespace DVT.Elevator.Services.Implementations
         #endregion
 
         #region Public Methods
+
         /// <summary>
         /// Validates the elevator request based on floor and passenger constraints.
         /// </summary>
         public ValidationResult ValidateRequest(int floor, int passengers)
         {
-            if (floor < 1 || floor > _building.NumberOfFloors)
+            try
             {
-                return ValidationResult.Failure($"Floor {floor} is out of range. Valid range is 1 to {_building.NumberOfFloors}.");
-            }
+                if (floor < 1 || floor > _building.NumberOfFloors)
+                {
+                    throw new InvalidFloorException($"Floor {floor} is out of range. Valid range is 1 to {_building.NumberOfFloors}.");
+                }
 
-            if (passengers <= 0)
+                if (passengers <= 0)
+                {
+                    throw new InvalidPassengerCountException("Number of passengers must be greater than zero.");
+                }
+
+                if (!_building.Elevators.Any(e => e.PassengerCount + passengers <= e.MaxCapacity))
+                {
+                    throw new CapacityExceededException("No elevators have enough capacity for the requested passengers.");
+                }
+
+                return ValidationResult.Success();
+            }
+            catch (InvalidFloorException ex)
             {
-                return ValidationResult.Failure("Number of passengers must be greater than zero.");
+                _logger.LogError(ex, "Validation failed for floor.");
+                return ValidationResult.Failure(ex.Message);
             }
-
-            if (!_building.Elevators.Any(e => e.PassengerCount + passengers <= e.MaxCapacity))
+            catch (InvalidPassengerCountException ex)
             {
-                return ValidationResult.Failure("No elevators have enough capacity for the requested passengers.");
+                _logger.LogError(ex, "Validation failed for passenger count.");
+                return ValidationResult.Failure(ex.Message);
             }
-
-            return ValidationResult.Success();
+            catch (CapacityExceededException ex)
+            {
+                _logger.LogError(ex, "Validation failed for capacity.");
+                return ValidationResult.Failure(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unexpected error occurred during validation.");
+                return ValidationResult.Failure("An unexpected error occurred during validation.");
+            }
         }
 
         /// <summary>
@@ -61,8 +86,15 @@ namespace DVT.Elevator.Services.Implementations
             var bestElevator = GetBestAvailableElevator(floor, passengers);
             if (bestElevator != null)
             {
-                AssignElevatorToRequest(bestElevator, floor, passengers);
-                await MoveElevatorAsync(bestElevator);
+                try
+                {
+                    AssignElevatorToRequest(bestElevator, floor, passengers);
+                    await MoveElevatorAsync(bestElevator);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error while moving the elevator.");
+                }
             }
             else
             {
@@ -91,28 +123,36 @@ namespace DVT.Elevator.Services.Implementations
         /// </summary>
         private async Task MoveElevatorAsync(Domain.Entities.Elevator elevator)
         {
-            while (elevator.DestinationFloors.Any())
+            try
             {
-                elevator.IsInMotion = true;
-                var targetFloor = elevator.DestinationFloors.Dequeue();
-
-                _logger.LogInformation($"Elevator {elevator.Id} starting to move from floor {elevator.CurrentFloor} to floor {targetFloor}.");
-
-                while (elevator.CurrentFloor != targetFloor)
+                while (elevator.DestinationFloors.Any())
                 {
-                    elevator.Direction = elevator.CurrentFloor < targetFloor ? ElevatorDirection.Up : ElevatorDirection.Down;
+                    elevator.IsInMotion = true;
+                    var targetFloor = elevator.DestinationFloors.Dequeue();
 
-                    // Moves elevator by one floor
-                    elevator.CurrentFloor += elevator.CurrentFloor < targetFloor ? 1 : -1;
+                    _logger.LogInformation($"Elevator {elevator.Id} starting to move from floor {elevator.CurrentFloor} to floor {targetFloor}.");
 
-                    _logger.LogInformation($"Elevator {elevator.Id} is now at floor {elevator.CurrentFloor}.");
-                    await Task.Delay(1000);
+                    while (elevator.CurrentFloor != targetFloor)
+                    {
+                        elevator.Direction = elevator.CurrentFloor < targetFloor ? ElevatorDirection.Up : ElevatorDirection.Down;
+
+                        // Moves elevator by one floor
+                        elevator.CurrentFloor += elevator.CurrentFloor < targetFloor ? 1 : -1;
+
+                        _logger.LogInformation($"Elevator {elevator.Id} is now at floor {elevator.CurrentFloor}.");
+                        await Task.Delay(1000);
+                    }
+
+                    _logger.LogInformation($"Elevator {elevator.Id} reached destination floor {elevator.CurrentFloor}.");
                 }
 
-                _logger.LogInformation($"Elevator {elevator.Id} reached destination floor {elevator.CurrentFloor}.");
+                elevator.IsInMotion = false;
             }
-
-            elevator.IsInMotion = false;
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while moving the elevator.");
+                elevator.IsInMotion = false; // Ensure that the elevator stops in case of error
+            }
         }
 
         /// <summary>
@@ -120,30 +160,44 @@ namespace DVT.Elevator.Services.Implementations
         /// </summary>
         private Domain.Entities.Elevator? GetBestAvailableElevator(int floor, int passengers)
         {
-            return _building.Elevators
-                .Where(e => e.PassengerCount + passengers <= e.MaxCapacity)
-                .OrderBy(e => e.IsInMotion)
-                .ThenBy(e => Math.Abs(e.CurrentFloor - floor)) // Nearest elevators have priority
-                .ThenBy(e => e.Direction == ElevatorDirection.Stationary ? 0 : 1) 
-                .ThenBy(e => e.PassengerCount) 
-                .FirstOrDefault();
+            try
+            {
+                return _building.Elevators
+                    .Where(e => e.PassengerCount + passengers <= e.MaxCapacity)
+                    .OrderBy(e => e.IsInMotion)
+                    .ThenBy(e => Math.Abs(e.CurrentFloor - floor)) // Nearest elevators have priority
+                    .ThenBy(e => e.Direction == ElevatorDirection.Stationary ? 0 : 1)
+                    .ThenBy(e => e.PassengerCount)
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while finding the best available elevator.");
+                return null;
+            }
         }
-
 
         /// <summary>
         /// Assigns an elevator to handle a request by adding the destination floor and updating its status.
         /// </summary>
         private void AssignElevatorToRequest(Domain.Entities.Elevator elevator, int floor, int passengers)
         {
-            if (!elevator.DestinationFloors.Contains(floor))
+            try
             {
-                elevator.DestinationFloors.Enqueue(floor);
+                if (!elevator.DestinationFloors.Contains(floor))
+                {
+                    elevator.DestinationFloors.Enqueue(floor);
+                }
+
+                elevator.PassengerCount += passengers;
+                elevator.IsInMotion = true;
+
+                _logger.LogInformation($"Assigned elevator {elevator.Id} to floor {floor} for {passengers} passengers.");
             }
-
-            elevator.PassengerCount += passengers;
-            elevator.IsInMotion = true;
-
-            _logger.LogInformation($"Assigned elevator {elevator.Id} to floor {floor} for {passengers} passengers.");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error occurred while assigning elevator {elevator.Id} to floor {floor}.");
+            }
         }
         #endregion
     }

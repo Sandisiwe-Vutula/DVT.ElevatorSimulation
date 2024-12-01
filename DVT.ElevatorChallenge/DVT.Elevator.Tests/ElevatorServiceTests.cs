@@ -39,5 +39,4 @@ namespace DVT.Elevator.Tests
             Assert.Empty(elevator.DestinationFloors);
         }
     }
-
 }
