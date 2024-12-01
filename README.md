@@ -46,8 +46,8 @@ Ensure you have the following installed:
    cd DVT.ElevatorSimulation
 
 3. Build the project:
-
-     dotnet build
+   ```bash
+   dotnet build
 
 # Usage Instructions
 
