@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DVT.Elevator.Domain\DVT.Elevator.Domain.csproj" />
+    <ProjectReference Include="..\DVT.Elevator.Infrastructure\DVT.Elevator.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DVT.Elevator.Domain.Enums
 {
-    internal class ElevatorType
+    public enum ElevatorType
     {
+        Passenger,
+        Freight,
+        HighSpeed,
+        Glass
     }
+
 }
