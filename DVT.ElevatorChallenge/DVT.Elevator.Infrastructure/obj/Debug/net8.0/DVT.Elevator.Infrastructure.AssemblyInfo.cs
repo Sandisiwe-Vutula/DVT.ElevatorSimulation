@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DVT.Elevator.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64492b2adc0618d0c2cce3385af10a4a003d25e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af0f82bcde5f253f4f6de68831c52f5726cd4ded")]
 [assembly: System.Reflection.AssemblyProductAttribute("DVT.Elevator.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DVT.Elevator.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
