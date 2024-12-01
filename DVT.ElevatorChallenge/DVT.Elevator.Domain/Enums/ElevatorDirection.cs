@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DVT.Elevator.Domain.Entities
+namespace DVT.Elevator.Domain.Enums
 {
-    internal class Floor
+    public enum ElevatorDirection
     {
+        Up,
+        Down,
+        Stationary
     }
 }
