@@ -1,18 +1,23 @@
 # DVT Elevator Simulation Challenge
 
-Welcome to the DVT Elevator Simulation Challenge. This project is a console-based application built with C# that simulates elevator movements in a large building. The system is designed to optimize passenger transportation efficiently while adhering to best practices in Object-Oriented Programming (OOP) principles.
+Welcome to the **DVT Elevator Simulation Challenge**. This project is a console-based application built with C# that simulates elevator movements in a large building. The system is designed to optimize passenger transportation efficiently while adhering to best practices in Object-Oriented Programming (OOP) principles.
 
 This project demonstrates advanced software engineering techniques, real-time operations, and a well-structured approach to solving complex system challenges.
 
 ## Table of Contents
 - [Features](#features)
 - [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 - [Usage Instructions](#usage-instructions)
+  - [Running the Simulation](#running-the-simulation)
+  - [Interactions](#interactions)
 - [Technical Details](#technical-details)
 - [Architecture Overview](#architecture-overview)
 - [Testing and Validation](#testing-and-validation)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
+- [Contact Information](#contact-information)
 
 ## Features
 
